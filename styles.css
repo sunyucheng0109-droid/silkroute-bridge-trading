@@ -21,6 +21,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
 }
 
 body {
@@ -144,6 +145,8 @@ a {
   display: grid;
   align-items: end;
   overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .hero-media,
@@ -249,6 +252,52 @@ a {
   width: min(1180px, calc(100% - 36px));
   margin: 0 auto;
   padding: clamp(76px, 10vw, 136px) 0;
+  scroll-snap-align: start;
+}
+
+.statement,
+.markets,
+.proof,
+.closing {
+  position: relative;
+}
+
+.statement::before,
+.markets::before,
+.proof::before,
+.closing::before {
+  content: "";
+  position: absolute;
+  inset: 34px calc(50% - 50vw);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.statement::before {
+  background:
+    linear-gradient(90deg, rgba(10, 13, 13, 0.94), rgba(10, 13, 13, 0.62)),
+    url("assets/silkroute-bridge-hero.png") center 48%/cover;
+  opacity: 0.28;
+}
+
+.markets::before {
+  background:
+    linear-gradient(90deg, rgba(10, 13, 13, 0.9), rgba(10, 13, 13, 0.58)),
+    url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2200&q=85") center/cover;
+}
+
+.proof::before {
+  background:
+    linear-gradient(90deg, rgba(10, 13, 13, 0.94), rgba(10, 13, 13, 0.68)),
+    url("https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=2200&q=85") center/cover;
+  opacity: 0.34;
+}
+
+.closing::before {
+  background:
+    linear-gradient(90deg, rgba(10, 13, 13, 0.92), rgba(10, 13, 13, 0.58)),
+    url("https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=2200&q=85") center/cover;
+  opacity: 0.42;
 }
 
 .section-line {
@@ -334,14 +383,14 @@ p {
 
 .split-a::before {
   background:
-    linear-gradient(90deg, rgba(7, 10, 12, 0.91) 0%, rgba(7, 10, 12, 0.58) 46%, rgba(7, 10, 12, 0.16) 100%),
-    url("https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=2200&q=85") center/cover;
+    linear-gradient(90deg, rgba(7, 10, 12, 0.9) 0%, rgba(7, 10, 12, 0.56) 46%, rgba(7, 10, 12, 0.18) 100%),
+    url("https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=2200&q=85") center/cover;
 }
 
 .split-b::before {
   background:
-    linear-gradient(90deg, rgba(7, 10, 12, 0.22) 0%, rgba(7, 10, 12, 0.7) 52%, rgba(7, 10, 12, 0.94) 100%),
-    url("https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=2200&q=85") center/cover;
+    linear-gradient(90deg, rgba(7, 10, 12, 0.24) 0%, rgba(7, 10, 12, 0.72) 52%, rgba(7, 10, 12, 0.94) 100%),
+    url("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=2200&q=85") center/cover;
 }
 
 .cinema-copy {
@@ -387,45 +436,77 @@ p {
 }
 
 .market-card {
+  position: relative;
+  overflow: hidden;
   min-height: 260px;
   padding: 24px;
   border: 1px solid var(--line);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035)),
+    linear-gradient(180deg, rgba(7, 10, 12, 0.04), rgba(7, 10, 12, 0.88)),
     var(--steel);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
+.market-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: center/cover;
+  transform: scale(1.02);
+}
+
+.market-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(5, 8, 8, 0.16), rgba(5, 8, 8, 0.9)),
+    linear-gradient(90deg, rgba(5, 8, 8, 0.88), rgba(5, 8, 8, 0.2) 68%, rgba(5, 8, 8, 0.76));
+}
+
+.market-card span,
+.market-card h3,
+.market-card p {
+  position: relative;
+  z-index: 2;
+}
+
 .market-card.large {
   grid-column: span 2;
   grid-row: span 2;
   min-height: 534px;
-  background:
-    linear-gradient(180deg, rgba(7, 10, 12, 0.08), rgba(7, 10, 12, 0.82)),
-    url("https://images.unsplash.com/photo-1600518464441-9306b5f2a3dc?auto=format&fit=crop&w=1200&q=85") center/cover;
 }
 
 .market-card.wide {
   grid-column: span 2;
 }
 
+.auto-card::before {
+  background-image: url("https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=1200&q=85");
+}
+
+.building-card::before {
+  background-image: url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=85");
+}
+
+.engineering-card::before {
+  background-image: url("https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1200&q=85");
+}
+
+.agri-card::before {
+  background-image: url("https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1200&q=85");
+}
+
+.light-card::before {
+  background-image: url("https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=1200&q=85");
+}
+
 .proof {
   padding-top: clamp(76px, 9vw, 118px);
-  color: #171b19;
-}
-
-.markets,
-.proof {
-  color: #171b19;
-}
-
-.markets .kicker,
-.proof .kicker,
-.markets .section-head h2,
-.proof .section-head h2 {
-  color: #171b19;
 }
 
 .markets .market-card,
@@ -438,10 +519,11 @@ p {
 }
 
 .routes {
+  scroll-snap-align: start;
   padding: clamp(80px, 12vw, 150px) clamp(18px, 4vw, 56px);
   background:
-    linear-gradient(rgba(7, 10, 12, 0.82), rgba(7, 10, 12, 0.86)),
-    url("https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=2200&q=85") center/cover;
+    linear-gradient(rgba(7, 10, 12, 0.8), rgba(7, 10, 12, 0.88)),
+    url("assets/silkroute-bridge-hero.png") center/cover;
 }
 
 .routes .section-head,
