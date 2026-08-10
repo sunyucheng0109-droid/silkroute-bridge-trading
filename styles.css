@@ -260,6 +260,8 @@ a {
 .proof,
 .closing {
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
 }
 
 .statement::before,
@@ -559,6 +561,8 @@ p {
   align-items: end;
   border-top: 1px solid var(--line);
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
 }
 
 .contact::before {
