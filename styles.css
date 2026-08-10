@@ -21,7 +21,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
 }
 
 body {
@@ -29,7 +28,7 @@ body {
   font-family: Arial, "Helvetica Neue", sans-serif;
   background:
     radial-gradient(circle at 82% 8%, rgba(214, 170, 91, 0.14), transparent 28%),
-    linear-gradient(180deg, #0a0d0d 0%, #111714 42%, #e7ddcf 42.1%, #e7ddcf 58%, #0e1413 58.1%, #0a0d0d 100%);
+    linear-gradient(180deg, #0a0d0d 0%, #111714 44%, #0e1413 100%);
   color: var(--ink);
 }
 
@@ -145,8 +144,6 @@ a {
   display: grid;
   align-items: end;
   overflow: hidden;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 .hero-media,
@@ -251,8 +248,11 @@ a {
 .contact {
   width: min(1180px, calc(100% - 36px));
   margin: 0 auto;
-  padding: clamp(76px, 10vw, 136px) 0;
-  scroll-snap-align: start;
+  min-height: 100svh;
+  padding: clamp(72px, 8vw, 112px) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .statement,
@@ -268,36 +268,36 @@ a {
 .closing::before {
   content: "";
   position: absolute;
-  inset: 34px calc(50% - 50vw);
+  inset: 0 calc(50% - 50vw);
   z-index: -1;
   pointer-events: none;
 }
 
 .statement::before {
   background:
-    linear-gradient(90deg, rgba(10, 13, 13, 0.94), rgba(10, 13, 13, 0.62)),
-    url("assets/silkroute-bridge-hero.png") center 48%/cover;
-  opacity: 0.28;
+    linear-gradient(90deg, rgba(10, 13, 13, 0.93) 0%, rgba(10, 13, 13, 0.68) 45%, rgba(10, 13, 13, 0.35) 100%),
+    url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2200&q=85") center/cover;
+  opacity: 1;
 }
 
 .markets::before {
   background:
-    linear-gradient(90deg, rgba(10, 13, 13, 0.9), rgba(10, 13, 13, 0.58)),
-    url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2200&q=85") center/cover;
+    linear-gradient(90deg, rgba(10, 13, 13, 0.92) 0%, rgba(10, 13, 13, 0.72) 42%, rgba(10, 13, 13, 0.5) 100%),
+    url("https://images.unsplash.com/photo-1586528116493-a029325540fa?auto=format&fit=crop&w=2200&q=85") center/cover;
 }
 
 .proof::before {
   background:
-    linear-gradient(90deg, rgba(10, 13, 13, 0.94), rgba(10, 13, 13, 0.68)),
+    linear-gradient(90deg, rgba(10, 13, 13, 0.92) 0%, rgba(10, 13, 13, 0.7) 48%, rgba(10, 13, 13, 0.38) 100%),
     url("https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=2200&q=85") center/cover;
-  opacity: 0.34;
+  opacity: 1;
 }
 
 .closing::before {
   background:
-    linear-gradient(90deg, rgba(10, 13, 13, 0.92), rgba(10, 13, 13, 0.58)),
+    linear-gradient(90deg, rgba(10, 13, 13, 0.94) 0%, rgba(10, 13, 13, 0.64) 52%, rgba(10, 13, 13, 0.28) 100%),
     url("https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=2200&q=85") center/cover;
-  opacity: 0.42;
+  opacity: 1;
 }
 
 .section-line {
@@ -375,7 +375,7 @@ p {
 
 .cinema {
   position: relative;
-  min-height: 86svh;
+  min-height: 100svh;
   display: grid;
   align-items: center;
   overflow: hidden;
@@ -519,10 +519,13 @@ p {
 }
 
 .routes {
-  scroll-snap-align: start;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: clamp(80px, 12vw, 150px) clamp(18px, 4vw, 56px);
   background:
-    linear-gradient(rgba(7, 10, 12, 0.8), rgba(7, 10, 12, 0.88)),
+    linear-gradient(90deg, rgba(7, 10, 12, 0.92) 0%, rgba(7, 10, 12, 0.68) 46%, rgba(7, 10, 12, 0.35) 100%),
     url("assets/silkroute-bridge-hero.png") center/cover;
 }
 
@@ -557,6 +560,16 @@ p {
   align-items: end;
   border-top: 1px solid var(--line);
   position: relative;
+}
+
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0 calc(50% - 50vw);
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(10, 13, 13, 0.94), rgba(10, 13, 13, 0.72)),
+    url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=2200&q=85") center/cover;
 }
 
 .contact-card {
