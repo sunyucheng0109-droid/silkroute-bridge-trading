@@ -138,6 +138,36 @@ a {
   background: rgba(7, 10, 12, 0.74);
 }
 
+.nav-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.quick-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quick-contact a {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 0 10px;
+  color: var(--soft);
+  background: rgba(7, 10, 12, 0.44);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.quick-contact a:hover {
+  color: var(--white);
+  border-color: rgba(214, 170, 91, 0.55);
+}
+
 .hero {
   position: relative;
   min-height: 100svh;
@@ -605,9 +635,14 @@ p {
   font-size: 34px;
 }
 
+.contact-links {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
 .contact-card a {
   display: block;
-  margin-top: 24px;
   color: var(--gold);
   font-weight: 800;
   word-break: break-word;
@@ -623,6 +658,20 @@ p {
 
   .nav nav {
     display: none;
+  }
+
+  .nav-tools {
+    gap: 8px;
+  }
+
+  .quick-contact a {
+    min-height: 32px;
+    padding: 0 8px;
+    font-size: 0;
+  }
+
+  .quick-contact a::first-letter {
+    font-size: 11px;
   }
 
   .language-control span {
@@ -736,6 +785,10 @@ p {
 
 @media (max-width: 560px) {
   .brand small {
+    display: none;
+  }
+
+  .quick-contact {
     display: none;
   }
 
